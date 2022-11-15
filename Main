@@ -1,0 +1,127 @@
+
+import requests
+import time 
+
+
+
+
+def voicetext(text):
+        #assemblyai.com
+        #google speech detect 
+
+        return text
+
+def textslide(slides):
+    def convert(url,myobj):
+        x = requests.post(url, json = myobj)
+        return x
+
+    url = 'http://api.convertio.co/convert'
+    myobj = {"apikey": "API_KEY", "file":"http://google.com/", "outputformat":"txt"}
+
+    x = convert(url,myobj)
+
+
+    y = x.json()
+
+    id1 = y['data']['id']
+
+    data = {}
+    while len(data) == 0:
+        response =  requests.get('http://api.convertio.co/convert/'+str(id1)+'/status')
+        jsonres = response.json()
+        test = jsonres['data']
+        data = test['output']
+        time.sleep(5)
+
+    texturl = data['url']
+    print(texturl)
+    filetxt = requests.get(texturl)
+    print(filetxt.content)
+    return slides
+    
+
+audio = 'file.mp3'
+
+#voice -> text
+text = voicetext(audio)
+
+#text -> slides
+slides = textslide(text)
+
+def convert(url,myobj):
+    x = requests.post(url, json = myobj)
+    return x
+
+url = 'http://api.convertio.co/convert'
+myobj = {"apikey": "NULL", "input" : "base64", "file":"google.txt", "filename": "google", "outputformat":"PPTX", "options": {"ocr_enabled": True, "ocr_settings": {"langs": ["eng"]}}}
+
+x = convert(url,myobj)
+print(x.content)
+
+
+y = x.json()
+print(y)
+
+id1 = y['data']['id']
+print(id1)
+
+data = {}
+while len(data) == 0:
+    response =  requests.get('http://api.convertio.co/convert/'+str(id1)+'/status')
+    print(response.json())
+    jsonres = response.json()
+    print(jsonres)
+    test = jsonres['data']
+    print(test)
+    data = test['output']
+    print(data)
+    time.sleep(5)
+    print("----")
+
+texturl = data['url']
+print(texturl)
+#filetxt = requests.get(texturl)
+#print(filetxt.content)
+
+
+
+import requests
+import time 
+
+def convert(url,myobj):
+    x = requests.post(url, json = myobj)
+    return x
+
+url = 'http://api.convertio.co/convert'
+myobj = {"apikey": "38ba6f25be1f5d21787096935844afc5", "input" : "base64", "file":"anvi-r.pdf", "filename": "google", "outputformat":"PPTX", "options": {"ocr_enabled": True, "ocr_settings": {"langs": ["eng"]}}}
+
+x = convert(url,myobj)
+print(x.content)
+
+
+y = x.json()
+print(y)
+
+id1 = y['data']['id']
+print(id1)
+
+data = {}
+while len(data) == 0:
+    response =  requests.get('http://api.convertio.co/convert/'+str(id1)+'/status')
+    print(response.json())
+    jsonres = response.json()
+    print(jsonres)
+    test = jsonres['data']
+    print(test)
+    data = test['output']
+    print(data)
+    time.sleep(5)
+    print("----")
+
+texturl = data['url']
+print(texturl)
+#filetxt = requests.get(texturl)
+#print(filetxt.content)
+
+
